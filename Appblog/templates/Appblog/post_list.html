@@ -1,0 +1,36 @@
+{% extends 'Appblog/inicio.html' %} 
+
+
+
+{% block main_content %}
+<body>
+
+    <ul>
+        {% for post in object_list %} 
+            <li> 
+                <div class="row">
+                    
+
+                    <div class="card mb-4">
+                        <a {{ post.imagen }} ><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <div class="card-body">
+                            <div class="small text-muted"> {{ post.fecha }} </div>
+                            <h2 class="card-title h4"> {{ post.titulo }} </h2>
+                            <p class="card-text"> {{ post.introduccion }} </p>
+                            <a class="btn btn-primary" href= "{% url 'Detail' post.titulo %}"> Ver →</a> <a class="btn btn-primary" href= "{% url 'Edit' post.titulo %}"> Editar →</a> <a class="btn btn-primary" href= "{% url 'Delete' post.titulo %}"> Borrar →</a>
+                        </div>
+                    </div>
+                </div>
+                   
+
+
+
+                </p>
+            </li>
+        {% endfor %} 
+    </ul>
+</body>
+{% endblock main_content %}
+
+</html>
+
