@@ -20,5 +20,10 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Appblog/', include ('Appblog.urls'))
+  
 
 ]
+
+#URL de Login
+
+LOGIN_URL = "/Appblog/login/"
