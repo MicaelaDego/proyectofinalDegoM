@@ -24,9 +24,12 @@
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Appblog/login/">Sing in </a></li>
+                        {% if not request.user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Appblog/login/">Sing in </a></li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Appblog/logout/">Sing out </a></li>
-
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -35,9 +38,14 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome {{USUARIO}} !
+                    {% if request.user.is_authenticated %}
+                    <h1 class="fw-bolder">Welcome {{request.user.username}} !
+                    {% else %} 
+                    <h1 class="fw-bolder">Welcome !
+                    {% endif %}
                     </h1>
                     <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                    <p></p>
                     <a class="btn btn-primary" id="button-search" href = "{% url 'New' %}" type="button">Crear post! </a>
 
                 </div>
