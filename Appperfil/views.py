@@ -1,5 +1,12 @@
+from urllib import request
+from django.http import HttpResponse
+from django.template import loader
+from dataclasses import fields
+
 from django.shortcuts import render
 from Appperfil.forms import *
+from Appperfil.models import *
+
 
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -35,3 +42,39 @@ def actualizar_usuario (request):
     else:
         formulario = UserEditForm(initial = {'email': usuario.email, 'username': usuario.username })
         return render (request, 'Appperfil/editar_usuario.html', {'form': formulario })
+
+@login_required
+
+
+@login_required()
+def cargar_imagen(request):
+
+    if request.method == "POST":
+
+        formulario = Avatarformulario(request.POST,request.FILES)
+
+        if formulario.is_valid():
+
+            usuario = request.user
+
+            avatar = Avatar.objects.filter(user=usuario)
+
+            if len(avatar) > 0:
+                avatar = avatar[0]
+                avatar.imagen = formulario.cleaned_data["imagen"]
+                avatar.save()
+
+            else:
+                avatar = Avatar(user=usuario, imagen=formulario.cleaned_data["imagen"])
+                avatar.save()
+            
+        return redirect("List")
+    else:
+
+        formulario = Avatarformulario()
+        return render(request, "Appperfil/cargar_imagen.html", {"form": formulario}) 
+ 
+
+
+
+

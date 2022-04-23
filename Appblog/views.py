@@ -13,13 +13,22 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.shortcuts import redirect
 
+from Appperfil.models import Avatar
+
 # Create your views here.
-def inicio (request,):
-    return render (request, 'Appblog/inicio.html')
+def perfil (request):
+    avatar = Avatar.objects.filter(user= request.user)
+
+    if len(avatar) > 0:
+        imagen = avatar[0].imagen.url
+        return render (request, 'Appblog/perfil.html', {'url': avatar[0].imagen.url })
+    return render (request, 'Appblog/perfil.html')
 
 class Listpost (ListView):
     model = Post
     template_name = "Appblog/post_list.html"
+
+
 
 class Detailpost (DetailView):
     model = Post
@@ -74,3 +83,5 @@ def register (request):
     else:
         form = UserCreationForm()
         return render (request, 'Appblog/register.html', {'form': form })
+
+

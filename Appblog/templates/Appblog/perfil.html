@@ -42,20 +42,15 @@
                     <h1 class="fw-bolder">Welcome {{request.user.username}} !
                     {% else %} 
                     <h1 class="fw-bolder">Welcome !
-                        <p></p>
                     {% endif %}
-                    {% if errors %}
-                    {% for error in errors %} 
-                       {{error}}
-                    {% endfor %}
-                {% endif %} 
-
+                    </h1>
                     <p></p>
-                    <a class="btn btn-primary" id="button-search" href = "{% url 'New' %}" type="button">Crear post! </a>
 
                 </div>
             </div>
         </header>
+        <div class = "text-center"> 
+            <img height="150" src=" {{url}}"> 
 
         <!-- Page content-->
         <div class="container">
@@ -67,15 +62,7 @@
                             <!-- Blog post-->
                             <p>        </p>
 
-                            {% if errors %}
-                                {% for error in errors %} 
-                                {{error}}
-                                {% endfor %}
-                            {% endif %} 
-
-
-
-                    {% block main_content %}   {% endblock %}
+          
                 </div>
             </div>
         </div>
