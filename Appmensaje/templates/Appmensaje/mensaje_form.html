@@ -7,16 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    
-        <form method="post" enctype="multipart/form-data">
-
+    <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-
-        <input type="submit"  class= 'btn btn-primary' value = 'Enviar'/>
-        <a class="btn btn-primary" href="{% url 'List' %}" > Regresar   </a>
-
-
-    </form>
+        {{ form.as_p}}
+        <input type="submit" value="Enviar">
+        
 </body>
 </html>

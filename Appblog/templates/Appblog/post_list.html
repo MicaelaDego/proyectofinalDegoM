@@ -12,22 +12,25 @@
                     
 
                     <div class="card mb-4">
-                        <a {{ post.imagen }} ><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <img  class="card-title"  height=" 250 " src="{% if post.imagen %} {{ post.imagen.url}} {% endif %} ">       
+
                         <div class="card-body">
+                           
                             <div class="small text-muted"> {{ post.fecha }} </div>
                             <h2 class="card-title h4"> {{ post.titulo }} </h2>
                             <p class="card-text"> {{ post.introduccion }} </p>
-                            <a class="btn btn-primary" href= "{% url 'Detail' post.titulo %}"> Ver →</a> <a class="btn btn-primary" href= "{% url 'Edit' post.titulo %}"> Editar →</a> <a class="btn btn-primary" href= "{% url 'Delete' post.titulo %}"> Borrar →</a>
+                        
+                            <a class="btn btn-primary" href= "{% url 'Detail' post.titulo %} "> Ver mas →</a> <a class="btn btn-primary" href= "{% url 'Edit' post.titulo %}"> Editar →</a> <a class="btn btn-primary" href= "{% url 'Delete' post.titulo %}"> Borrar →</a>
                         </div>
                     </div>
                 </div>
-                   
+        {% endfor %}   
 
 
 
                 </p>
             </li>
-        {% endfor %} 
+       
 
                                 
                     <!-- Pagination -->
@@ -47,33 +50,31 @@
                         <div class="card-header">Perfil</div>
                         <div class="card-body">
                             <div class="input-group">
+                                <div class="text-center ">
+                                    {% if request.user.is_authenticated %}
+                                    <h1 class="">{{request.user.username}} </h1>
 
-                            </div>
-                        </div>
-                        <!-- avatar -->
-                        <div class = ' text-center'>
-                            <img height="200px" src="{{url}}" >
-                    </div>
-                    <p>
+                            <p>
+                                        <a href= "{% url 'perfil' %}" > Ir a mi perfil </a>
+
+                                        {% else %} 
+                                        <p class="fw-bolder">Aun no iniciaste sesion>
+                                        {% endif %}
+
 
                     </p>
                     <!-- Categories widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Categories</div>
+                        <div class="card-header">Accesos directos </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
+              
+                                        <li><a href="https://seti.afip.gob.ar/padron-puc-constancia-internet/ConsultaConstanciaAction.do">Constancia de inscripcion AFIP</a></li>
+                                        <li><a href="https://seti.afip.gob.ar/av/seleccionVencimientos.do">Vencimientos AFIP</a></li>
+                                        <li><a href="https://serviciosweb.afip.gob.ar/genericos/calculoInteres/">Calculadora de intereses AFIP</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
+                       
                                     </ul>
                                 </div>
                             </div>
@@ -81,8 +82,17 @@
                     </div>
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-header">Mensajes </div>
+                        <div class="card-body"> Dejanos tu mensaje! Recorda que debes estar registrado </div>
+                        {% if request.user.is_authenticated %}
+                       
+
+                <p>
+                            <a href= "{% url 'mensajes' %}" > Deja tu mensaje! </a>
+
+                            {% else %} 
+                            <p class="fw-bolder">Aun no iniciaste sesion>
+                            {% endif %}
                     </div>
                 </div>
             </div>

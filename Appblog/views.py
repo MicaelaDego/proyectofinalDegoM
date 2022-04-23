@@ -14,6 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 
 from Appperfil.models import Avatar
+from Appperfil.forms import UserRegisterForm
 
 # Create your views here.
 def perfil (request):
@@ -24,11 +25,14 @@ def perfil (request):
         return render (request, 'Appblog/perfil.html', {'url': avatar[0].imagen.url })
     return render (request, 'Appblog/perfil.html')
 
+def about (request):
+    return render (request, 'Appblog/about.html')
+
+
+# ABM BLOG
 class Listpost (ListView):
     model = Post
     template_name = "Appblog/post_list.html"
-
-
 
 class Detailpost (DetailView):
     model = Post
@@ -37,18 +41,19 @@ class Detailpost (DetailView):
 class Createpost (LoginRequiredMixin, CreateView):
     model = Post
     success_url = "/Appblog/postlist"
-    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'autor', 'fecha']
+    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'autor', 'fecha', 'imagen']
 
 class Updatepost (LoginRequiredMixin, UpdateView):
     model = Post
     success_url = "/Appblog/postlist"
-    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'autor', 'fecha']
+    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'autor', 'fecha', 'imagen']
 
 class Deletepost (LoginRequiredMixin, DeleteView):
     model = Post
     success_url = "/Appblog/postlist"
 
 
+# LOG IN LOG OUT
 
 def login_request (request):
     if request.method == 'POST':
@@ -83,5 +88,6 @@ def register (request):
     else:
         form = UserCreationForm()
         return render (request, 'Appblog/register.html', {'form': form })
+
 
 

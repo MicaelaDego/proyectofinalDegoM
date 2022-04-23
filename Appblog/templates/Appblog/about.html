@@ -34,25 +34,14 @@
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome {{USUARIO}} !
-                        <p>
+                <div class="text-center my-1">
+                    <h1 class=""> 
+                        <h5> Hola !, mi nombre es Micaela Dego, cree este proyecto para el curso de Python de Coder House.
+                            Se trata de un blog acerca de impuestos.
+                        <p>   Creado con el fin de poder volcar todos mis conocimientos obtenidos en el curso </p>
+                            Espero que les guste!
 
-                        </p>
-                        <hi class="lead mb-0">
-                        <form method="POST">
-        
-                            {% csrf_token %}
-                    
-                            {{form.as_p}}
-                    
-                            <button type="submit", > Iniciar sesion </button>
-                            <p></p>
-                           <p>Si aun no te registraste  </p>
-
-                            <a class="btn btn-primary" id="button-search" href = "{% url 'Register' %}" type="button">Registrate! </a>
-                           
-                        </hi>
+                       
                 </div>
             </div>
         </header>

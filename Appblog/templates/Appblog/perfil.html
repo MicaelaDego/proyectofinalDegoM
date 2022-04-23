@@ -39,9 +39,8 @@
             <div class="container">
                 <div class="text-center my-5">
                     {% if request.user.is_authenticated %}
-                    <h1 class="fw-bolder">Welcome {{request.user.username}} !
-                    {% else %} 
-                    <h1 class="fw-bolder">Welcome !
+                    <h1 class="fw-bolder">Bienvenid@ {{request.user.username}} !
+
                     {% endif %}
                     </h1>
                     <p></p>
@@ -50,7 +49,26 @@
             </div>
         </header>
         <div class = "text-center"> 
-            <img height="150" src=" {{url}}"> 
+            <img height="300" src=" {{url}}"> 
+            <p></p>
+
+        <p class="fw-bolder">Nombre:  {{request.user.first_name}} 
+        <p class="fw-bolder">Apellido:  {{request.user.last_name}} 
+        <p class="fw-bolder">Email:  {{request.user.email}} 
+       <p> <a href="{% url 'actualizar' %}"> Actualizar usuario </a>
+        {% if request.user.is_superuser %}
+        <p> <a href="{% url 'cargarimagen' %}"> Actualizar foto </a>
+           {% else %} 
+           <p></p>"Usted no esta autorizado para modificar su foto, solo el administrador puede hacerlo"
+        {% endif %}
+        <p></p>
+        <p> <a href="{% url 'List' %}"> Volver al inicio -> </a>
+
+
+
+
+            
+
 
         <!-- Page content-->
         <div class="container">
