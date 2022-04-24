@@ -1,6 +1,8 @@
 # proyectofinalDegoM
 Proyecto final para curso de Python 
 
+AUTORA : DEGO MICAELA LUJAN
+
 Blog 
 pagina principal: 
 
