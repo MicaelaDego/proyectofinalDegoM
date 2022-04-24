@@ -30,4 +30,8 @@ INICIAR SESION O REGISTRATE: http://127.0.0.1:8000/Appblog/login/
 CREAR POST: http://127.0.0.1:8000/nuevo/
 
 
+usuarios: usertest  contraseña: Contrasena1234
+superuser: admin contraseña: Mica4745
+
+
 
