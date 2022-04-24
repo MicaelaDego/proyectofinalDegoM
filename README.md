@@ -34,4 +34,6 @@ usuarios: usertest  contraseña: Contrasena1234
 superuser: admin contraseña: Mica4745
 
 
+Los casos de prueba se encuentran dentro de un excel en el archivo principal. 
+
 
