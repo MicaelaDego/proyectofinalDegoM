@@ -32,6 +32,7 @@ def actualizar_usuario (request):
             usuario.first_name = data ['first_name']
             usuario.last_name = data ['last_name']
 
+            
             usuario.save()
 
             return redirect ('List')
@@ -42,6 +43,41 @@ def actualizar_usuario (request):
     else:
         formulario = UserEditForm(initial = {'email': usuario.email, 'username': usuario.username })
         return render (request, 'Appperfil/editar_usuario.html', {'form': formulario })
+
+def informacion (request):
+    info = Usuario.objects.filter(user= request.user)
+    link = info[0]
+     
+    return render (request, 'Appperfil/infoadicional.html', {'link': link })
+   
+def actualizar_informacion (request):
+
+    if request.method == 'POST':
+        form = UserextendForm(request.POST)
+   
+        if form.is_valid():
+            usuario = request.user
+            info = Usuario.objects.filter(user = usuario)
+
+            info = info[0]
+            info.link = form.cleaned_data["link"]
+            info.descripcion = form.cleaned_data['descripcion']
+            info.save()
+
+ 
+            return redirect ('perfil')
+        else:
+            formulario = UserextendForm()
+            return render (request, 'Appperfil/informacion.html', {'form': formulario, 'errors': ['Datos invalidos'] })
+
+    else:
+        formulario = UserextendForm()
+        return render (request, 'Appperfil/informacion.html', {'form': formulario })
+
+
+
+
+
 
 @login_required
 
