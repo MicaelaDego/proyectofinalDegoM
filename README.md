@@ -6,11 +6,12 @@ AUTORA : DEGO MICAELA LUJAN
 Blog 
 pagina principal: 
 
-http://127.0.0.1:8000/   --- > nos lleva a la pagina de inicio, en donde lista todo los post 
+http://127.0.0.1:8000/   --- > nos lleva a la pagina de inicio
+http://127.0.0.1:8000/pages -----> nos lleva a la lista de post 
 http://127.0.0.1:8000/about ---- > informacion del proyecto 
 
 SIN HABER INICIADO SESION:
-http://127.0.0.1:8000/Appblog/login/ ----> Para inicial sesion o, si no tenes usuario, registrarte 
+http://127.0.0.1:8000/accounts/login/ ----> Para inicial sesion o, si no tenes usuario, registrarte 
 
 Podemos ver todos los post listados y , seleccionar la opcion de ver en detalle 
 A la derecha podemos acceder a accesos directos
@@ -27,8 +28,10 @@ desde la opcion "Deja tu mensaje" , a la derecha de la pantalla , podremos acced
 
 URL :
 PERFIL : http://127.0.0.1:8000/Appblog/perfil/
-MENSAJES: http://127.0.0.1:8000/Appmensajes/mensajes/
-INICIAR SESION O REGISTRATE: http://127.0.0.1:8000/Appblog/login/ 
+MENSAJES: http://127.0.0.1:8000/messages/
+INICIAR SESION: http://127.0.0.1:8000/accounts/login/
+REGISTRARTE: http://127.0.0.1:8000/accounts/register/
+CERRAR SESION: http://127.0.0.1:8000/accounts/logout/
 CREAR POST: http://127.0.0.1:8000/nuevo/
 
 
