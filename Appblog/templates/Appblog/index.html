@@ -45,14 +45,10 @@
                         {% endif %}
                         <h5 class = "text-muted" > Al blog con todas las novedades acerca de impuestos  </p>  
                     
-                    {% if errors %}
-                    {% for error in errors %} 
-                       {{error}}
-                    {% endfor %}
-                {% endif %} 
+                   
 
                     <p></p>
-                    <a class="btn btn-primary" id="button-search" href = "{% url 'New' %}" type="button">Crear post! </a>
+                    <a class="btn btn-primary" id="button-search" href = "{% url 'List' %}" type="button">Ir al blog! </a>
 
                 </div>
             </div>

@@ -20,7 +20,10 @@
                             <h2 class="card-title h4"> {{ post.titulo }} </h2>
                             <p class="card-text"> {{ post.introduccion }} </p>
                         
-                            <a class="btn btn-primary" href= "{% url 'Detail' post.titulo %} "> Ver mas →</a> <a class="btn btn-primary" href= "{% url 'Edit' post.titulo %}"> Editar →</a> <a class="btn btn-primary" href= "{% url 'Delete' post.titulo %}"> Borrar →</a>
+                            <a class="btn btn-primary" href= "{% url 'Detail' post.id %} "> Ver mas →</a>
+                            {% if request.user.username == post.autor %} 
+                             <a class="btn btn-primary" href= "{% url 'Edit' post.id %}"> Editar →</a> <a class="btn btn-primary" href= "{% url 'Delete' post.id %}"> Borrar →</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

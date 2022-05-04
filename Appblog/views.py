@@ -1,6 +1,8 @@
+from ast import AugStore
 from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse
+from Appblog.forms import formulariopost
 from Appblog.models import *
 from django.template import loader
 from django.views.generic import ListView, DeleteView, UpdateView, DetailView
@@ -28,29 +30,36 @@ def perfil (request):
 def about (request):
     return render (request, 'Appblog/about.html')
 
+def inicio (request):
+    return render (request, 'Appblog/index.html')
+
 
 # ABM BLOG
+
+
+
 class Listpost (ListView):
-    model = Post
-    template_name = "Appblog/post_list.html"
+    model = Post1
+    template_name = "Appblog/post1_list.html"
 
 class Detailpost (DetailView):
-    model = Post
-    template_name = "Appblog/post_detail.html"
+    model = Post1
+    template_name = "Appblog/post1_detail.html"
 
 class Createpost (LoginRequiredMixin, CreateView):
-    model = Post
-    success_url = "/Appblog/postlist"
-    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'autor', 'fecha', 'imagen']
+    model = Post1
+    success_url = "/pages"
+    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'fecha', 'autor', 'imagen']
+    
 
 class Updatepost (LoginRequiredMixin, UpdateView):
-    model = Post
-    success_url = "/Appblog/postlist"
-    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'autor', 'fecha', 'imagen']
+    model = Post1
+    success_url = "/pages"
+    fields = ['titulo', 'subtitulo', 'introduccion' , 'cuerpo', 'fecha', 'autor', 'imagen']
 
 class Deletepost (LoginRequiredMixin, DeleteView):
-    model = Post
-    success_url = "/Appblog/postlist"
+    model = Post1
+    success_url = "/pages"
 
 
 # LOG IN LOG OUT

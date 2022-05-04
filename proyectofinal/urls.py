@@ -33,15 +33,24 @@ urlpatterns = [
 
     # url App BLOG 
 
-    path('login/', login_request, name= 'Login'),
-    path('register/', register, name = 'Register'),
-     path('' , Listpost.as_view(), name = 'List'),
-    path('logout/', LogoutView.as_view (template_name= 'Appblog/logout.html'), name ='Logout' ),
+    path('accounts/login/', login_request, name= 'Login'),
+    path('accounts/register/', register, name = 'Register'),
+    path('accounts/logout/', LogoutView.as_view (template_name= 'Appblog/logout.html'), name ='Logout' ),
+    path('accounts/profile/', perfil, name= 'perfil'),
+
+    path('about/', about, name = 'about'),
+
     path('nuevo/', Createpost.as_view(), name='New'), 
-    path('<pk>/', Detailpost.as_view(), name = 'Detail'), 
+    path('pages/<pk>/', Detailpost.as_view(), name = 'Detail'), 
     path('editar/<pk>', Updatepost.as_view(), name= 'Edit'),
     path('borrar/<pk>', Deletepost.as_view(), name = 'Delete'),
-    path('about', about, name = 'about'),
+
+    path('', inicio, name= 'Inicio'),
+    path('pages', Listpost.as_view(), name = 'List'),
+
+    path('messages/' , Listmensaje.as_view(), name = 'mensajes'),
+
+
 
     # url App MENSAJES
     

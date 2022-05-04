@@ -54,19 +54,19 @@ def actualizar_informacion (request):
 
     if request.method == 'POST':
         form = UserextendForm(request.POST)
-   
-        if form.is_valid():
-            usuario = request.user
-            info = Usuario.objects.filter(user = usuario)
+        try:
+            if form.is_valid():
+                usuario = request.user
+                info = Usuario.objects.filter(user = usuario)
 
-            info = info[0]
-            info.link = form.cleaned_data["link"]
-            info.descripcion = form.cleaned_data['descripcion']
-            info.save()
+                info = info[0]
+                info.link = form.cleaned_data["link"]
+                info.descripcion = form.cleaned_data['descripcion']
+                info.save()
 
- 
+        
             return redirect ('perfil')
-        else:
+        except:
             formulario = UserextendForm()
             return render (request, 'Appperfil/informacion.html', {'form': formulario, 'errors': ['Datos invalidos'] })
 
