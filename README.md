@@ -1,6 +1,8 @@
 # proyectofinalDegoM
 Proyecto final para curso de Python 
 
+AUTORA : DEGO MICAELA LUJAN
+
 Blog 
 pagina principal: 
 
@@ -35,5 +37,5 @@ superuser: admin contraseña: Mica4745
 
 
 Los casos de prueba se encuentran dentro de un excel en el archivo principal. 
-
+Link del video de prueba: https://www.youtube.com/watch?v=WB5pv-tH-L8
 
